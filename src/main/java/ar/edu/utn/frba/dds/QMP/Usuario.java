@@ -19,11 +19,11 @@ public class Usuario {
     asesorDeImagen.generarSugerencia();
   }
 
-  public void suscribirseNotificaro(Notificador notificador){
+  public void suscribirseNotificador(Notificador notificador){
     notificador.suscribirUsuario(this);
   }
 
-  public void dessuscribirseNotificaro(Notificador notificador){
+  public void desuscribirseNotificador(Notificador notificador){
     notificador.desuscribirUsuario(this);
   }
 
