@@ -1,26 +1,35 @@
 package ar.edu.utn.frba.dds.QMP;
 
-import java.util.HashSet;
-import java.util.Set;
-
+import java.util.List;
 
 public class Usuario {
-    // que pueda almacenar su tipo de guardarropas [guardarropasDeViaje,guardarropasDeEntrCasa]
-    public Set guardarropas = new HashSet<Guardarropa>();
+  public String correo;
+  public AsesorDeImagen asesorDeImagen = new AsesorDeImagen();
+  public Sugerencia sugerenciaDiaria;
 
-    void compartiGuardarropas(Usuario usuario, Guardarropa guardarropa){
-        usuario.agregarGuardarropas(guardarropa);
-    }
+  public Sugerencia getSugerenciaDiaria(){
+    return this.sugerenciaDiaria;
+  }
 
-    public void proponerPrendaAOtorGuardarropas(Usuario usuario, Prenda prenda, Guardarropa guardarropa) throws Exception {
-        if(usuario.guardarropas.contains(guardarropa)){
-            guardarropa.agregarPrendaSugerida(prenda);
-        } else {
-            throw new Exception("El usuario no tiene ese guardarropas guardado");
-        }
-    }
+  public void calcularSugerenciaDiaria() {
+    this.sugerenciaDiaria = calcularSugerencia();
+  }
 
-    public void agregarGuardarropas(Guardarropa guardarropa){
-        this.guardarropas.add(guardarropa);
-    }
+  private Sugerencia calcularSugerencia() {
+    asesorDeImagen.generarSugerencia();
+  }
+
+  public void suscribirseNotificaro(Notificador notificador){
+    notificador.suscribirUsuario(this);
+  }
+
+  public void dessuscribirseNotificaro(Notificador notificador){
+    notificador.desuscribirUsuario(this);
+  }
+
+  public String getCorreo(){
+    return this.correo;
+  }
+
+
 }
